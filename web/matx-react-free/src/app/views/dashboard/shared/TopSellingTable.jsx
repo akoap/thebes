@@ -133,25 +133,25 @@ const TopSellingTable = () => {
 const productList = [
     {
         imgUrl: '/assets/images/products/headphone-2.jpg',
-        name: 'earphone',
+        name: 'NFC Chip 1',
         price: 100,
         available: 15,
     },
     {
         imgUrl: '/assets/images/products/headphone-3.jpg',
-        name: 'earphone',
+        name: 'NFC Chip 2',
         price: 1500,
         available: 30,
     },
     {
         imgUrl: '/assets/images/products/iphone-2.jpg',
-        name: 'iPhone x',
+        name: 'NFC Chip 3',
         price: 1900,
         available: 35,
     },
     {
         imgUrl: '/assets/images/products/iphone-1.jpg',
-        name: 'iPhone x',
+        name: 'NFC Chip 4',
         price: 100,
         available: 0,
     },
