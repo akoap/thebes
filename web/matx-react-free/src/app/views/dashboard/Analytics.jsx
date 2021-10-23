@@ -18,16 +18,52 @@ const Analytics = () => {
     const [ description, setDescription ] = useState("");
     const [ couponType, setCouponType ] = useState("");
     const [ expiration, setExpiration ] = useState("");
+    const [ chipId, setChipId ] = useState("");
 
     function reset() {
         setName("");
         setDescription("");
         setCouponType("");
         setExpiration("");
+        setChipId("");
     }
 
-    function handleSubmit(e) {
-        console.log(name, description, couponType, expiration)
+    async function handleSubmit(e) {
+        console.log(name, description, couponType, expiration, chipId)
+
+        // const fetch = require("node-fetch");
+        
+
+        // let date = new Date(); // initialize our date
+
+        // let options = {
+        //     date,
+        //     nepOrganization: "test-drive-3611d66f193f424295a44",
+        //     requestURL: "https://api.ncr.com/order/3/orders/1/12388465659725447903",
+        //     httpMethod: "GET",
+        //     contentType: "application/json",
+        // };
+
+        // const username = "f7a71501-fa5c-46eb-baac-ed438c4dc443";
+        // const password = "Password123456!";
+
+        // console.log(`${username}:${password}`)
+
+        // let requestOptions = {
+        //     method: options.httpMethod,
+        //     headers: {
+        //         "Content-Type": options.contentType,
+        //         Authorization: `Basic ${btoa(`${username}:${password}`)}`,
+        //         "nep-organization": options.nepOrganization,
+        //         Date: date.toGMTString(),
+        //     },
+        // };
+
+        // const response = await fetch(options.requestURL, requestOptions);
+        // const data = await response.json();
+
+        // console.log('RECEIVED DATA');
+        // console.log(data);
 
         reset();
     }
@@ -38,12 +74,13 @@ const Analytics = () => {
                 <Grid container spacing={3}>
                     {/* This Grid is for businesses to add coupons */}
                     <Grid item lg={12} md={12} sm={12} xs={12}>
-                        <TextField id="filled-basic" label="name" variant="filled" value={name} onChange={(e) => setName(e.target.value)} />
-                        <TextField id="filled-basic" label="description" variant="filled" value={description} onChange={(e) => setDescription(e.target.value)} />
-                        <TextField id="filled-basic" label="couponType" variant="filled" value={couponType} onChange={(e) => setCouponType(e.target.value)} />
-                        <TextField id="filled-basic" label="expiration" variant="filled" value={expiration} onChange={(e) => setExpiration(e.target.value)} />
-
-                        <Button onClick={handleSubmit} variant="contained">Contained</Button>
+                        <TextField id="filled-basic" label="Name" variant="filled" value={name} onChange={(e) => setName(e.target.value)} />
+                        <TextField id="filled-basic" label="Description" variant="filled" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <TextField id="filled-basic" label="Coupon Type" variant="filled" value={couponType} onChange={(e) => setCouponType(e.target.value)} />
+                        <TextField id="filled-basic" label="Expiration" variant="filled" value={expiration} onChange={(e) => setExpiration(e.target.value)} />
+                        <TextField id="filled-basic" label="Chip Id" variant="filled" value={chipId} onChange={(e) => setChipId(e.target.value)} />
+                        <br />
+                        <Button onClick={handleSubmit} variant="contained">Generate Coupon</Button>
                         {/* "name":"$4 Off $40 total purchase",
                         "description":"$4 Off $40 total purchase",
                         "couponType":"Store",
