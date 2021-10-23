@@ -39,11 +39,11 @@ const TopSellingTable = () => {
     return (
         <Card elevation={3} className="pt-5 mb-6">
             <div className="flex justify-between items-center px-6 mb-3">
-                <span className="card-title">top selling products</span>
-                <Select size="small" defaultValue="this_month" disableUnderline>
-                    <MenuItem value="this_month">This Month</MenuItem>
-                    <MenuItem value="last_month">Last Month</MenuItem>
-                </Select>
+                <span className="card-title">NFC Beacon Data</span>
+                {/* <Select size="small" defaultValue="this_month" disableUnderline> */}
+                    {/* <MenuItem value="this_month">This Month</MenuItem> */}
+                    {/* <MenuItem value="last_month">Last Month</MenuItem> */}
+                {/* </Select> */}
             </div>
             <div className="overflow-auto">
                 <Table
@@ -58,13 +58,13 @@ const TopSellingTable = () => {
                                 Name
                             </TableCell>
                             <TableCell className="px-0" colSpan={2}>
-                                Revenue
+                                Redemptions
                             </TableCell>
                             <TableCell className="px-0" colSpan={2}>
-                                Stock Status
+                                Redemptions Remaining
                             </TableCell>
                             <TableCell className="px-0" colSpan={1}>
-                                Action
+                                Edit
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -77,7 +77,7 @@ const TopSellingTable = () => {
                                     align="left"
                                 >
                                     <div className="flex items-center">
-                                        <Avatar src={product.imgUrl} />
+                                        {/* <Avatar src={product.imgUrl} /> */}
                                         <p className="m-0 ml-8">
                                             {product.name}
                                         </p>
@@ -88,7 +88,6 @@ const TopSellingTable = () => {
                                     align="left"
                                     colSpan={2}
                                 >
-                                    $
                                     {product.price > 999
                                         ? (product.price / 1000).toFixed(1) +
                                           'k'
@@ -101,7 +100,7 @@ const TopSellingTable = () => {
                                     colSpan={2}
                                 >
                                     {product.available ? (
-                                        product.available < 20 ? (
+                                        product.available < 1000 ? (
                                             <small className="border-radius-4 bg-secondary text-white px-2 py-2px">
                                                 {product.available} available
                                             </small>
@@ -133,34 +132,22 @@ const TopSellingTable = () => {
 const productList = [
     {
         imgUrl: '/assets/images/products/headphone-2.jpg',
-        name: 'earphone',
-        price: 100,
-        available: 15,
+        name: 'NFC Chip 1',
+        price: 2,
+        available: 13,
     },
     {
         imgUrl: '/assets/images/products/headphone-3.jpg',
-        name: 'earphone',
-        price: 1500,
-        available: 30,
+        name: 'NFC Chip 2',
+        price: 95,
+        available: 5,
     },
     {
         imgUrl: '/assets/images/products/iphone-2.jpg',
-        name: 'iPhone x',
-        price: 1900,
-        available: 35,
-    },
-    {
-        imgUrl: '/assets/images/products/iphone-1.jpg',
-        name: 'iPhone x',
-        price: 100,
-        available: 0,
-    },
-    {
-        imgUrl: '/assets/images/products/headphone-3.jpg',
-        name: 'Head phone',
-        price: 1190,
-        available: 5,
-    },
+        name: 'NFC Chip 3',
+        price: 37,
+        available: 113,
+    }
 ]
 
 export default TopSellingTable
