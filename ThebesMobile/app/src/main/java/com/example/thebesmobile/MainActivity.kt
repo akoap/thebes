@@ -88,16 +88,22 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
-                val gson = Gson()
-                val coupon = gson.fromJson(response.body()?.string(), CouponEntity.data::class.java)
+                if (response.code() == 200) {
+                    val gson = Gson()
+                    val coupon = gson.fromJson(response.body()?.string(), CouponEntity.data::class.java)
 
-                intent.putExtra("id", coupon.id)
-                intent.putExtra("name", coupon.name)
-                intent.putExtra("description", coupon.description)
-                intent.putExtra("expiration", coupon.expiration)
+                    CouponEntity.id = coupon.id
+                    CouponEntity.name = coupon.name
+                    CouponEntity.decsription = coupon.description
+                    CouponEntity.expiration = coupon.expiration
+                    intent.putExtra("id", coupon.id)
+                    intent.putExtra("name", coupon.name)
+                    intent.putExtra("description", coupon.description)
+                    intent.putExtra("expiration", coupon.expiration)
+                    startActivity(intent)
+                }
             }
         })
 
-        startActivity(intent)
     }
 }
