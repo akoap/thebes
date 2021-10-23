@@ -1,6 +1,7 @@
 package com.example.thebesmobile
 
 import android.R
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Point
 import android.os.Bundle
@@ -22,11 +23,20 @@ class CouponActivity : AppCompatActivity() {
     private var qrCodeIV: ImageView? = null
     private var dataEdt: EditText? = null
     private var generateQrBtn: Button? = null
+    private var extras: Bundle? = null
     var bitmap: Bitmap? = null
     var qrgEncoder: QRGEncoder? = null
+    private var debugTag = "debug_nfc"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.example.thebesmobile.R.layout.activity_coupon)
+
+        Log.d(debugTag, " ")
+        Log.d(debugTag, " ")
+        Log.d(debugTag, intent.extras?.getString("name")!!)
+        Log.d(debugTag, " ")
+        Log.d(debugTag, " ")
 
         // initializing all variables.
         nameText = findViewById(com.example.thebesmobile.R.id.idName)
@@ -34,8 +44,8 @@ class CouponActivity : AppCompatActivity() {
         qrCodeIV = findViewById(com.example.thebesmobile.R.id.idIVQrcode)
         generateQrBtn = findViewById(com.example.thebesmobile.R.id.idBtnGenerateQR)
 
-        nameText?.setText("West Village - Free Raw Chicken")
-        descriptionText?.setText("Head to West Village by the end of the week to die")
+        nameText?.setText(intent.extras?.getString("name")!!)
+        descriptionText?.setText(intent.extras?.getString("description")!!)
 
         // initializing onclick listener for button.
         if (false) {
