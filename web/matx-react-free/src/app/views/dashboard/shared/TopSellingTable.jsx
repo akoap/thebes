@@ -7,10 +7,7 @@ import {
     TableHead,
     TableRow,
     TableCell,
-    TableBody,
-    Avatar,
-    MenuItem,
-    Select,
+    TableBody
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'

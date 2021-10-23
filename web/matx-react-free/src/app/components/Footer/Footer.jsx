@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider, makeStyles, useTheme } from '@material-ui/core/styles'
-import { Button, Toolbar, AppBar } from '@material-ui/core'
+import { Toolbar, AppBar } from '@material-ui/core'
 import clsx from 'clsx'
 import useSettings from 'app/hooks/useSettings'
 

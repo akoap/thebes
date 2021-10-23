@@ -1,13 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import { Grid, TextField, Button } from '@material-ui/core'
 import TopSellingTable from './shared/TopSellingTable'
-import { useTheme } from '@material-ui/styles'
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '@material-ui/lab/Alert';
 
-const Analytics = () => {
-    const theme = useTheme()
-    
+const Analytics = () => {    
     const [open, setOpen] = React.useState(false);
     function handleClose(event, reason) {
         if (reason === "clickaway") {
