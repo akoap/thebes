@@ -22,6 +22,7 @@ const Analytics = () => {
     const [ couponType, setCouponType ] = useState("");
     const [ expiration, setExpiration ] = useState("");
     const [ chipId, setChipId ] = useState("");
+    const [ message, setMessage ] = useState("");
 
     function reset() {
         setName("");
@@ -32,16 +33,16 @@ const Analytics = () => {
     }
 
     async function handleSubmit(e) {
-        setOpen(true);
-        console.log(name, description, couponType, expiration, chipId)
+        // console.log(name, description, couponType, expiration, chipId)
 
         const couponEndpoint = 'https://us-east1-thebes-329917.cloudfunctions.net/thebes-backend?first=' + name + '&second=' + description + '&third=' + expiration;
 
         fetch(couponEndpoint)
         .then(resonse => resonse.text())
-        .then(data => console.log(data));
-
-        console.log(name, description, couponType, expiration, chipId)
+        .then(data => {
+            setMessage(data);
+            setOpen(true);
+        });
 
         reset();
     }
@@ -101,7 +102,7 @@ const Analytics = () => {
 
                 <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                        Successfully generated coupon: {}!
+                        Successfully generated coupon: {message}
                     </Alert>
                 </Snackbar>
             </div>
