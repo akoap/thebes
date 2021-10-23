@@ -46,7 +46,6 @@ typings/
 
 # TypeScript cache
 *.tsbuildinfo
-
 # Optional npm cache directory
 .npm
 
@@ -105,3 +104,8 @@ dist
 
 # Misc
 ./idea
+
+# custom
+package-lock.json
+test.js
+
