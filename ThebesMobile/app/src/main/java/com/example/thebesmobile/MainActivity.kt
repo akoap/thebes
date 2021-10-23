@@ -8,11 +8,16 @@ import android.nfc.NfcManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.gson.Gson
+import okhttp3.*
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
     private var debugTag = "debug_nfc"
 
     private var adapter: NfcAdapter? = null
+
+    private var client = OkHttpClient()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +77,27 @@ class MainActivity : AppCompatActivity() {
     private fun onTagTapped(superTagId: String, superTagData: String) {
         Log.d(debugTag, superTagId)
         Log.d(debugTag, superTagData)
+
+        val request = Request.Builder()
+            .url("https://us-east1-thebes-329917.cloudfunctions.net/thebes-get-coupon?chipId=${superTagId}")
+            .build()
+
         val intent = Intent(this@MainActivity, CouponActivity::class.java)
+
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {}
+            override fun onResponse(call: Call, response: Response) {
+                val gson = Gson()
+                val coupon = gson.fromJson(response.body()?.string(), CouponEntity.data::class.java)
+
+                intent.putExtra("id", coupon.id)
+                intent.putExtra("name", coupon.name)
+                intent.putExtra("description", coupon.description)
+                intent.putExtra("expiration", coupon.expiration)
+            }
+        })
+
         startActivity(intent)
     }
 }
