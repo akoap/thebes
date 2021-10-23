@@ -92,10 +92,6 @@ class MainActivity : AppCompatActivity() {
                     val gson = Gson()
                     val coupon = gson.fromJson(response.body()?.string(), CouponEntity.data::class.java)
 
-                    CouponEntity.id = coupon.id
-                    CouponEntity.name = coupon.name
-                    CouponEntity.decsription = coupon.description
-                    CouponEntity.expiration = coupon.expiration
                     intent.putExtra("id", coupon.id)
                     intent.putExtra("name", coupon.name)
                     intent.putExtra("description", coupon.description)
