@@ -12,8 +12,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text="Name" />
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="Name" android:textSize="34sp"/>
 
     <TextView
             android:id="@+id/idDescription"
@@ -21,18 +24,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/idName"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text="Description" />/>
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:text="Description" android:textSize="20sp"/>/>
 
     <!--We are using this image
         view to display our QR code-->
     <ImageView
             android:id="@+id/idIVQrcode"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_below="@id/idDescription"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:contentDescription="@string/qr_code" />
 
     <!--Edit text to enter text
@@ -48,5 +54,15 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:text="Redeem" />
+
+    <Button
+            android:id="@+id/idReturn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idBtnGenerateQR"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:text="Scan another coupon"/>
 
 </RelativeLayout>
