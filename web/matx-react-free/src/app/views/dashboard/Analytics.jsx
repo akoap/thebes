@@ -1,17 +1,20 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { Grid, Card, TextField, Button } from '@material-ui/core'
-import DoughnutChart from './shared/Doughnut'
-import StatCards from './shared/StatCards'
+import React, { Fragment, useState } from 'react'
+import { Grid, TextField, Button } from '@material-ui/core'
 import TopSellingTable from './shared/TopSellingTable'
-import RowCards from './shared/RowCards'
-import StatCards2 from './shared/StatCards2'
-import UpgradeCard from './shared/UpgradeCard'
-import Campaigns from './shared/Campaigns'
 import { useTheme } from '@material-ui/styles'
-import _ from 'lodash'
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from '@material-ui/lab/Alert';
 
 const Analytics = () => {
     const theme = useTheme()
+    
+    const [open, setOpen] = React.useState(false);
+    function handleClose(event, reason) {
+        if (reason === "clickaway") {
+            return;
+        }
+        setOpen(false);
+    }
 
     // these constantly store the current inputted values
     const [ name, setName ] = useState("");
@@ -29,41 +32,9 @@ const Analytics = () => {
     }
 
     async function handleSubmit(e) {
+        setOpen(true);
+
         console.log(name, description, couponType, expiration, chipId)
-
-        // const fetch = require("node-fetch");
-        
-
-        // let date = new Date(); // initialize our date
-
-        // let options = {
-        //     date,
-        //     nepOrganization: "test-drive-3611d66f193f424295a44",
-        //     requestURL: "https://api.ncr.com/order/3/orders/1/12388465659725447903",
-        //     httpMethod: "GET",
-        //     contentType: "application/json",
-        // };
-
-        // const username = "f7a71501-fa5c-46eb-baac-ed438c4dc443";
-        // const password = "Password123456!";
-
-        // console.log(`${username}:${password}`)
-
-        // let requestOptions = {
-        //     method: options.httpMethod,
-        //     headers: {
-        //         "Content-Type": options.contentType,
-        //         Authorization: `Basic ${btoa(`${username}:${password}`)}`,
-        //         "nep-organization": options.nepOrganization,
-        //         Date: date.toGMTString(),
-        //     },
-        // };
-
-        // const response = await fetch(options.requestURL, requestOptions);
-        // const data = await response.json();
-
-        // console.log('RECEIVED DATA');
-        // console.log(data);
 
         reset();
     }
@@ -120,6 +91,12 @@ const Analytics = () => {
                         <Campaigns />
                     </Grid> */}
                 </Grid>
+
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                        Successfully generated coupon: {}!
+                    </Alert>
+                </Snackbar>
             </div>
         </Fragment>
     )
