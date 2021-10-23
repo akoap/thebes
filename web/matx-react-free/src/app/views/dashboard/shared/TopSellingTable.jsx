@@ -132,19 +132,19 @@ const TopSellingTable = () => {
 const productList = [
     {
         imgUrl: '/assets/images/products/headphone-2.jpg',
-        name: 'NFC Chip 1',
+        name: 'NFC Beacon 1',
         price: 2,
         available: 13,
     },
     {
         imgUrl: '/assets/images/products/headphone-3.jpg',
-        name: 'NFC Chip 2',
+        name: 'NFC Beacon 2',
         price: 95,
         available: 5,
     },
     {
         imgUrl: '/assets/images/products/iphone-2.jpg',
-        name: 'NFC Chip 3',
+        name: 'NFC Beacon 3',
         price: 37,
         available: 113,
     }
