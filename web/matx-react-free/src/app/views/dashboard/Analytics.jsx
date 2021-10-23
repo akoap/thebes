@@ -31,6 +31,19 @@ const Analytics = () => {
     async function handleSubmit(e) {
         console.log(name, description, couponType, expiration, chipId)
 
+
+
+        const couponEndpoint = 'https://us-east1-thebes-329917.cloudfunctions.net/thebes-backend?first=' + name + '&second=' + description + '&third=' + expiration;
+
+
+        fetch(couponEndpoint)
+        .then(resonse => resonse.text())
+        .then(data => console.log(data));
+
+        
+
+
+
         // const fetch = require("node-fetch");
         
 
