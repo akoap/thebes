@@ -5,22 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.nfc.NfcAdapter
 import android.nfc.NfcManager
-import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.getTag
 
 class MainActivity : AppCompatActivity() {
-    val notfound = "No NFC found"
-    val success = "NFC scanned successfully"
-    val failure = "Scanning failed"
-    var tag: WritableTag? = null
-    var tagId: String? = null
+    private var debugTag = "debug_nfc"
 
-    var debugTag = "debug_nfc"
-
-    var adapter: NfcAdapter? = null
+    private var adapter: NfcAdapter? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,15 +60,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-//        val tagFromIntent = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
-//        try {
-//            tag = WritableTag(tagFromIntent)
-//        } catch (e: FormatException) {
-//            Log.e(getTag(), "Unsupported tag tapped", e)
-//            return
-//        }
-//        tagId = tag!!.tagId
-//        showToast("Tag tapped: $tagId")
 
         if (NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action) {
             val rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
@@ -89,5 +72,7 @@ class MainActivity : AppCompatActivity() {
     private fun onTagTapped(superTagId: String, superTagData: String) {
         Log.d(debugTag, superTagId)
         Log.d(debugTag, superTagData)
+        val intent = Intent(this@MainActivity, CouponActivity::class.java)
+        startActivity(intent)
     }
 }
