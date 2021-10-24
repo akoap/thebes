@@ -55,12 +55,12 @@ class CouponActivity : AppCompatActivity() {
         nameText?.setText(intent.extras?.getString("name")!!)
         descriptionText?.setText(intent.extras?.getString("description")!!)
 
-        // initializing onclick listener for button.
+        // can put a check here for valid nfc
         if (false) {
+
 
             // if the edittext inputs are empty then execute
             // this method showing a toast message.
-            Toast.makeText(this@CouponActivity, "Enter some text to generate QR Code", Toast.LENGTH_SHORT).show()
         } else {
             // below line is for getting
             // the windowmanager service.
@@ -85,7 +85,7 @@ class CouponActivity : AppCompatActivity() {
 
             // setting this dimensions inside our qr code
             // encoder to generate our qr code.
-            qrgEncoder = QRGEncoder("3843847548392", null, QRGContents.Type.TEXT, dimen)
+            qrgEncoder = QRGEncoder(intent.extras?.getString("id"), null, QRGContents.Type.TEXT, dimen)
             try {
                 // getting our qrcode in the form of bitmap.
                 bitmap = qrgEncoder!!.encodeAsBitmap()
